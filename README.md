@@ -31,7 +31,7 @@ Create Simple OAuth server to provide `authorize` and `token` methods.
 
 - register client ( `POST /clients/:id` this method is only for internal usage to manage available clients)
 - then get `code` via authorize method (`GET /oauth/authorize`)
-- with this `code` you should be able call `token` method (`GET /oauth/token`) and get access token.
+- with this `code` you should be able call `token` method (`GET /oauth/token`) and get access token. when `code` was not created by authorize method, returns error.
 - with access token you should be able access to protected section `GET /api/test`
 
 Make some usage-tests in `jest` as example how it works.
