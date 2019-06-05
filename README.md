@@ -17,6 +17,14 @@ Install modules from docker
 docker-compose run --rm app npm i npm install --save @hapi/joi
 ``` 
 
+## Testing
+
+To run test you need have running redis container (`docker-compose up`).
+
+```bash
+make test
+```
+
 ## Homework (todo)
 
 Create Simple OAuth server to provide `authorize` and `token` methods. 
