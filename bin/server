@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+require('ts-node').register({files: true})
+require('tsconfig-paths').register()
+
+const bootstrap = require('../src/bootstrap')
+const logger = require('../src/logger')
+
+process.on('uncaughtException', async (err) => {
+	logger.error(err, `uncaught exception ${err.message}`)
+})
+
+process.on('unhandledRejection', async (err) => {
+	logger.error(err, `unhandled rejection`)
+})
+
+process.on('SIGINT', async () => {
+	setTimeout(() => {
+		process.exit(1)
+	}, 10000).unref()
+	await bootstrap.stop()
+})
+
+process.on('SIGTERM', async () => {
+	setTimeout(() => {
+		process.exit(1)
+	}, 10000).unref()
+	await bootstrap.stop()
+})
+
+bootstrap.start()

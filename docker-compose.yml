@@ -1,0 +1,26 @@
+version: '3.5'
+
+services:
+  app:
+    image: node:10
+    container_name: homework_app
+    working_dir: /app
+    tty: true
+    volumes:
+      - .:/app:delegated
+    environment:
+      NODE_ENV: development
+      NODEMON_EXTRA_ARGS: --legacy-watch
+      REDIS_HOST: homework_redis
+    command: make _start-watch
+    expose:
+      - 80
+    ports:
+      - 9100:80
+
+  redis:
+    image: redis:3-alpine
+    container_name: homework_redis
+    ports:
+      - 9101:6379
+    command: ["redis-server", "--appendonly", "yes"]
