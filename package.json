@@ -10,7 +10,7 @@
     "@types/koa": "^2.0.48",
     "@types/koa-router": "^7.0.40",
     "@types/node": "^11.13.8",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bunyan": "^1.8.12",
     "install": "^0.12.2",
     "ioredis": "^4.9.5",
